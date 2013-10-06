@@ -27,7 +27,7 @@ public class MainActivity extends Activity
 	{
 
 		imageButton = (ImageButton) findViewById(R.id.imageButton0);
-		imageButton.setImageDrawable(null);
+		imageButton.setImageResource(R.drawable.pic_default);
 
 		imageButton.setOnClickListener(new OnClickListener()
 		{
@@ -37,15 +37,15 @@ public class MainActivity extends Activity
 			{
 				if (imageDrawableId == null)
 				{
-					imageDrawableId = R.drawable.ic_pic0;
+					imageDrawableId = R.drawable.pic0;
 				}
-				else if (imageDrawableId == R.drawable.ic_pic0)
+				else if (imageDrawableId == R.drawable.pic0)
 				{
-					imageDrawableId = R.drawable.ic_pic1;
+					imageDrawableId = R.drawable.pic1;
 				}
 				else
 				{
-					imageDrawableId = R.drawable.ic_pic0;
+					imageDrawableId = R.drawable.pic0;
 				}
 				;
 				imageButton.setImageResource(imageDrawableId);
