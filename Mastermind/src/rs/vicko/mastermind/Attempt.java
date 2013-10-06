@@ -25,4 +25,17 @@ public class Attempt
 		return tokens.get(position);
 	}
 
+	public boolean isReadyForCheck()
+	{
+		for (int i = 1; i <= 4; i++)
+		{
+			if (tokens.get(i) == Token.DEFAULT)
+			{
+				return false;
+			}
+		}
+		return true;
+
+	}
+
 }

@@ -1,6 +1,7 @@
 package rs.vicko.mastermind;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MastermindImpl implements Mastermind
@@ -26,6 +27,11 @@ public class MastermindImpl implements Mastermind
 
 		imageButton.setImageResource(drawableId);
 		attempt.setToken(Token.byId(tokenId), tokenPos);
+
+		Button btnCheck = (Button) activity.findViewById(R.id.btnCheck);
+
+		btnCheck.setClickable(attempt.isReadyForCheck());
+
 	}
 
 }
