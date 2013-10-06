@@ -3,7 +3,7 @@ package rs.vicko.mastermind;
 public enum Token
 {
 
-	DEFAULT(0), ORANGE(1), BLUE(2);
+	DEFAULT(0), ORANGE(1), BLUE(2), GREEN(3);
 
 	private int id;
 
@@ -29,4 +29,13 @@ public enum Token
 		return null;
 	}
 
+	public static int getMaxId()
+	{
+		int maxId = 0;
+		for (Token token : Token.values())
+		{
+			maxId = token.getId() > maxId ? token.getId() : maxId;
+		}
+		return maxId;
+	}
 }

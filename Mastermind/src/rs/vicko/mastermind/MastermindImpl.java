@@ -6,8 +6,6 @@ import android.widget.ImageButton;
 public class MastermindImpl implements Mastermind
 {
 
-	private final static int TOTAL_TOKENS = 2;
-
 	@Override
 	public void setNextToken(MainActivity activity, int tokenPos)
 	{
@@ -22,7 +20,7 @@ public class MastermindImpl implements Mastermind
 
 		int tokenId = attempt.getToken(tokenPos).getId();
 
-		tokenId = tokenId + 1 > TOTAL_TOKENS ? 1 : tokenId + 1;
+		tokenId = tokenId + 1 > Token.getMaxId() ? 1 : tokenId + 1;
 
 		int drawableId = activity.getResources().getIdentifier("pic" + tokenId, "drawable", activity.getPackageName());
 

@@ -12,8 +12,6 @@ public class MainActivity extends Activity
 
 	private Attempt attempt = new Attempt();
 
-	private ImageButton imageButton;
-
 	private Mastermind mm = new MastermindImpl();
 
 	@Override
@@ -22,31 +20,75 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		addListenerOnButton();
+		addListenerOnButton1();
+		addListenerOnButton2();
+		addListenerOnButton3();
+		addListenerOnButton4();
 
 	}
 
-	private void addListenerOnButton()
+	private void addListenerOnButton1()
 	{
-
 		final MainActivity activity = this;
-
-		
-		
+		ImageButton imageButton;
 		imageButton = (ImageButton) findViewById(R.id.imageButton1);
-		imageButton.setImageResource(R.drawable.pic_default);
 
 		imageButton.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View v)
 			{
 				mm.setNextToken(activity, 1);
-
 			}
 		});
+	}
 
+	private void addListenerOnButton2()
+	{
+		final MainActivity activity = this;
+		ImageButton imageButton;
+		imageButton = (ImageButton) findViewById(R.id.imageButton2);
+
+		imageButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				mm.setNextToken(activity, 2);
+			}
+		});
+	}
+
+	private void addListenerOnButton3()
+	{
+		final MainActivity activity = this;
+		ImageButton imageButton;
+		imageButton = (ImageButton) findViewById(R.id.imageButton3);
+
+		imageButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				mm.setNextToken(activity, 3);
+			}
+		});
+	}
+
+	private void addListenerOnButton4()
+	{
+		final MainActivity activity = this;
+		ImageButton imageButton;
+		imageButton = (ImageButton) findViewById(R.id.imageButton4);
+
+		imageButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				mm.setNextToken(activity, 4);
+			}
+		});
 	}
 
 	@Override

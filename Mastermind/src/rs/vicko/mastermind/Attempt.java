@@ -11,7 +11,7 @@ public class Attempt
 		tokens = new SparseArray<Token>();
 		for (int i = 1; i <= 4; i++)
 		{
-			tokens.put(1, Token.DEFAULT);
+			tokens.put(i, Token.DEFAULT);
 		}
 	}
 
