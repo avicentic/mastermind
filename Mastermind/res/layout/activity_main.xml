@@ -15,7 +15,7 @@
         android:text="@string/hello_world" />
 
     <ImageButton
-        android:id="@+id/imageButton0"
+        android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -23,7 +23,7 @@
         android:src="@drawable/ic_pic0" />
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageButton1"

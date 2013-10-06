@@ -10,8 +10,11 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity
 {
 
+	private Attempt attempt = new Attempt();
+
 	private ImageButton imageButton;
-	private Integer imageDrawableId = null;
+
+	private Mastermind mm = new MastermindImpl();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +29,11 @@ public class MainActivity extends Activity
 	private void addListenerOnButton()
 	{
 
-		imageButton = (ImageButton) findViewById(R.id.imageButton0);
+		final MainActivity activity = this;
+
+		
+		
+		imageButton = (ImageButton) findViewById(R.id.imageButton1);
 		imageButton.setImageResource(R.drawable.pic_default);
 
 		imageButton.setOnClickListener(new OnClickListener()
@@ -35,20 +42,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				if (imageDrawableId == null)
-				{
-					imageDrawableId = R.drawable.pic0;
-				}
-				else if (imageDrawableId == R.drawable.pic0)
-				{
-					imageDrawableId = R.drawable.pic1;
-				}
-				else
-				{
-					imageDrawableId = R.drawable.pic0;
-				}
-				;
-				imageButton.setImageResource(imageDrawableId);
+				mm.setNextToken(activity, 1);
 
 			}
 		});
@@ -61,6 +55,16 @@ public class MainActivity extends Activity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	public Attempt getAttempt()
+	{
+		return attempt;
+	}
+
+	public void setAttempt(Attempt attempt)
+	{
+		this.attempt = attempt;
 	}
 
 }
