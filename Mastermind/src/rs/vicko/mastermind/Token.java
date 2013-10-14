@@ -3,7 +3,7 @@ package rs.vicko.mastermind;
 public enum Token
 {
 
-	DEFAULT(0), TOKEN01(1), TOKEN02(2), TOKEN03(3), TOKEN04(4), TOKEN05(5), TOKEN06(6);
+	DEFAULT(0), TOKEN_SPADE(1), TOKEN_DIAMOND(2), TOKEN_HEART(3), TOKEN_CLUB(4), TOKEN_STAR(5), TOKEN_ROYAL(6);
 
 	private int id;
 
