@@ -34,8 +34,7 @@ public class MainActivity extends Activity
 		imageButton = (ImageButton) findViewById(R.id.imageButton1);
 
 		imageButton.setOnClickListener(new OnClickListener()
-		{
-			
+		{			
 			@Override
 			public void onClick(View v)
 			{
