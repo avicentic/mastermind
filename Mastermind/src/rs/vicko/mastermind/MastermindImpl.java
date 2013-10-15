@@ -25,6 +25,8 @@ public class MastermindImpl implements Mastermind
 
 		int drawableId = activity.getResources().getIdentifier("pic0" + tokenId, "drawable", activity.getPackageName());
 
+		Log.d("setNextToken", String.format("On position %s set token %s", tokenPos, Token.byId(tokenId)));
+
 		imageButton.setImageResource(drawableId);
 		attempt.setToken(Token.byId(tokenId), tokenPos);
 

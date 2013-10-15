@@ -1,5 +1,7 @@
 package rs.vicko.mastermind;
 
+import java.util.Arrays;
+
 import android.util.SparseArray;
 
 public class Attempt
@@ -36,6 +38,18 @@ public class Attempt
 		}
 		return true;
 
+	}
+
+	@Override
+	public String toString()
+	{
+		String ret = "";
+		for (int i = 1; i <= 4; i++)
+		{
+			ret = ret + ";" + tokens.get(i);
+
+		}
+		return ret.substring(1);
 	}
 
 }

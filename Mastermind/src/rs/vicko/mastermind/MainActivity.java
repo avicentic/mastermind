@@ -2,9 +2,11 @@ package rs.vicko.mastermind;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends Activity
@@ -24,7 +26,25 @@ public class MainActivity extends Activity
 		addListenerOnButton2();
 		addListenerOnButton3();
 		addListenerOnButton4();
+		
+		addListenerOnCheckButton();
 
+	}
+
+	private void addListenerOnCheckButton()
+	{
+		Button button = (Button) findViewById(R.id.btnCheck);
+		button.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				Log.d("OnCheck", attempt.toString());
+			}
+		});
+		
 	}
 
 	private void addListenerOnButton1()
