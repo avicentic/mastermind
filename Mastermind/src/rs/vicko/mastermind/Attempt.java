@@ -1,7 +1,5 @@
 package rs.vicko.mastermind;
 
-import java.util.Arrays;
-
 import android.util.SparseArray;
 
 public class Attempt
