@@ -27,6 +27,7 @@ public class Attempt
 
 	public boolean isReadyForCheck()
 	{
+		//TODO realize using for loop
 		for (int i = 1; i <= 4; i++)
 		{
 			if (tokens.get(i) == Token.DEFAULT)
