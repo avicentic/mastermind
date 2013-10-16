@@ -42,6 +42,7 @@ public class Attempt
 	public String toString()
 	{
 		String ret = "";
+		//TODO realize using for loop
 		for (int i = 1; i <= 4; i++)
 		{
 			ret = ret + ";" + tokens.get(i);
