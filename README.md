@@ -1,3 +1,3 @@
-mastermind
+Mastermind
 ==========
-test commit2
+Mastermind is simple android project.
