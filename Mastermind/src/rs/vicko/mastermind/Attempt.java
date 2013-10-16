@@ -5,11 +5,13 @@ import android.util.SparseArray;
 public class Attempt
 {
 	private SparseArray<Token> tokens;
+	private int size;
 
-	public Attempt()
+	public Attempt(int size)
 	{
+		this.size = size;
 		tokens = new SparseArray<Token>();
-		for (int i = 1; i <= 4; i++)
+		for (int i = 1; i <= size; i++)
 		{
 			tokens.put(i, Token.DEFAULT);
 		}
@@ -27,8 +29,7 @@ public class Attempt
 
 	public boolean isReadyForCheck()
 	{
-		//TODO realize using for loop
-		for (int i = 1; i <= 4; i++)
+		for (int i = 1; i <= size; i++)
 		{
 			if (tokens.get(i) == Token.DEFAULT)
 			{
@@ -43,13 +44,12 @@ public class Attempt
 	public String toString()
 	{
 		String ret = "";
-		//TODO realize using for loop
-		for (int i = 1; i <= 4; i++)
+		for (int i = 1; i <= size; i++)
 		{
-			ret = ret + ";" + tokens.get(i);
+			ret = ret + (i > 1 ? ";" : "") + tokens.get(i);
 
 		}
-		return ret.substring(1);
+		return ret;
 	}
 
 }

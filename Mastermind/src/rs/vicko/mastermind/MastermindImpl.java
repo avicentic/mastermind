@@ -16,7 +16,8 @@ public class MastermindImpl implements Mastermind
 		int resourceId = activity.getResources().getIdentifier("imageButton" + tokenPos, "id",
 				activity.getPackageName());
 
-		Log.d("Mastermind", "resourceid=" + resourceId);
+		Log.d("setNextToken",
+				String.format("Image resource id = %s,  package = %s", resourceId, activity.getPackageName()));
 		ImageButton imageButton = (ImageButton) activity.findViewById(resourceId);
 
 		int tokenId = attempt.getToken(tokenPos).getId();
