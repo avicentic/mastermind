@@ -1,5 +1,8 @@
 package rs.vicko.mastermind;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -10,10 +13,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class MainActivity extends Activity
 {
 
+	private Attempt target;
 	private Attempt attempt = new Attempt(4);
 	private int attemptNo = 0;
 
@@ -23,6 +28,7 @@ public class MainActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -33,11 +39,28 @@ public class MainActivity extends Activity
 
 		addListenerOnCheckButton();
 
+		setTarget();
+
+	}
+
+	private void setTarget()
+	{
+		target = new Attempt(4);
+		for (int i = 1; i <= 4; i++)
+		{
+
+			int tokenId = 1 + (int) (6 * Math.random());
+
+			Token token = Token.byId(tokenId);
+			target.setToken(token, i);
+		}
+		Log.d("setTarget", target.toString());
+
 	}
 
 	private void addListenerOnCheckButton()
 	{
-		Button button = (Button) findViewById(R.id.btnCheck);
+		final Button button = (Button) findViewById(R.id.btnCheck);
 		button.setOnClickListener(new OnClickListener()
 		{
 
@@ -51,7 +74,6 @@ public class MainActivity extends Activity
 
 				TableRow tableRow = (TableRow) findViewById(tableRowId);
 
-				// TODO Auto-generated method stub
 				for (int i = 1; i <= 4; i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
@@ -61,8 +83,38 @@ public class MainActivity extends Activity
 					image.setImageResource(imageId);
 					tableRow.addView(image);
 				}
-
+				TextView text = new TextView(getApplicationContext());
+				tableRow.addView(text);
 				Log.d("OnCheck", attempt.toString());
+				Log.d("OnCheck", target.toString());
+
+				int hitColor = 0;
+				int hitPosition = 0;
+				List<Integer> solved = new ArrayList<Integer>();
+				for (int i = 1; i <= 4; i++)
+				{
+					if (attempt.getToken(i).getId() == target.getToken(i).getId())
+					{
+						hitPosition++;
+						solved.add(i);
+					}
+				}
+				for (int i = 1; i <= 4; i++)
+				{
+					for (int j = 1; j <= 4; j++)
+					{
+						if (i != j && !solved.contains(i) && !solved.contains(j))
+						{
+							if (attempt.getToken(i).getId() == target.getToken(j).getId())
+							{
+								hitColor++;
+								solved.add(i);
+							}
+						}
+					}
+				}
+
+				text.setText(String.format("%s-%s", hitPosition, hitColor));
 
 				//clear attempt
 				attempt = new Attempt(4);
@@ -72,6 +124,7 @@ public class MainActivity extends Activity
 					ImageButton imageButton = (ImageButton) findViewById(resourceId);
 					imageButton.setImageResource(R.drawable.pic_default);
 				}
+				button.setClickable(false);
 			}
 		});
 
