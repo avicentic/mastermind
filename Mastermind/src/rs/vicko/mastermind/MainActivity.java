@@ -85,31 +85,33 @@ public class MainActivity extends Activity
 				}
 				TextView text = new TextView(getApplicationContext());
 				tableRow.addView(text);
-				Log.d("OnCheck", attempt.toString());
-				Log.d("OnCheck", target.toString());
+				Log.d("OnCheck", "attempt: " + attempt.toString());
+				Log.d("OnCheck", "target: " + target.toString());
+
+				Attempt a = attempt.clone();
+				Attempt t = target.clone();
 
 				int hitColor = 0;
 				int hitPosition = 0;
-				List<Integer> solved = new ArrayList<Integer>();
 				for (int i = 1; i <= 4; i++)
 				{
-					if (attempt.getToken(i).getId() == target.getToken(i).getId())
+					if (a.getToken(i).getId() == t.getToken(i).getId())
 					{
+						a.setToken(Token.DEFAULT, i);
+						t.setToken(Token.DEFAULT, i);
 						hitPosition++;
-						solved.add(i);
 					}
 				}
 				for (int i = 1; i <= 4; i++)
 				{
 					for (int j = 1; j <= 4; j++)
 					{
-						if (i != j && !solved.contains(i) && !solved.contains(j))
+						if (a.getToken(i) != Token.DEFAULT && t.getToken(j) != Token.DEFAULT
+								&& a.getToken(i).getId() == t.getToken(j).getId())
 						{
-							if (attempt.getToken(i).getId() == target.getToken(j).getId())
-							{
-								hitColor++;
-								solved.add(i);
-							}
+							a.setToken(Token.DEFAULT, i);
+							t.setToken(Token.DEFAULT, j);
+							hitColor++;
 						}
 					}
 				}

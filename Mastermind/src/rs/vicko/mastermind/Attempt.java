@@ -52,4 +52,15 @@ public class Attempt
 		return ret;
 	}
 
+	public Attempt clone()
+	{
+		Attempt clon = new Attempt(size);
+		for (int i = 1; i <= size; i++)
+		{
+			clon.setToken(Token.byId(tokens.get(i).getId()), i);
+		}
+
+		return clon;
+	}
+
 }
