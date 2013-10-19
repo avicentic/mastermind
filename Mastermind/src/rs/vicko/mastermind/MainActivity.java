@@ -80,8 +80,9 @@ public class MainActivity extends Activity
 					image.setImageResource(imageId);
 					tableRow.addView(image);
 				}
-				TextView text = new TextView(getApplicationContext());
-				tableRow.addView(text);
+				//TextView text = new TextView(getApplicationContext());
+				//tableRow.addView(text);
+
 				Log.d("OnCheck", "attempt: " + attempt.toString());
 				Log.d("OnCheck", "target: " + target.toString());
 
@@ -113,7 +114,26 @@ public class MainActivity extends Activity
 					}
 				}
 
-				text.setText(String.format("%s-%s", hitPosition, hitColor));
+				for (int i = 1; i <= hitPosition; i++)
+				{
+					ImageView image = new ImageView(getApplicationContext());
+					image.setImageResource(R.drawable.pic_position_ok);
+					tableRow.addView(image);
+				}
+				for (int i = 1; i <= hitColor; i++)
+				{
+					ImageView image = new ImageView(getApplicationContext());
+					image.setImageResource(R.drawable.pic_color_ok);
+					tableRow.addView(image);
+				}
+				for (int i = 1; i <= 4 - hitPosition - hitColor; i++)
+				{
+					ImageView image = new ImageView(getApplicationContext());
+					image.setImageResource(R.drawable.pic_missed);
+					tableRow.addView(image);
+				}
+
+				//text.setText(String.format("%s-%s", hitPosition, hitColor));
 
 				//clear attempt
 				attempt = new Attempt(4);
