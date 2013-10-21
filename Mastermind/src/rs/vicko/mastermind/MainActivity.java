@@ -3,12 +3,14 @@ package rs.vicko.mastermind;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -114,22 +116,29 @@ public class MainActivity extends Activity
 					}
 				}
 
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+						LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				params.gravity = Gravity.CENTER_VERTICAL;
+
 				for (int i = 1; i <= hitPosition; i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_position_ok);
+					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
 				for (int i = 1; i <= hitColor; i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_color_ok);
+					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
 				for (int i = 1; i <= 4 - hitPosition - hitColor; i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_missed);
+					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
 
