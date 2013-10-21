@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background" >
@@ -13,25 +14,29 @@
             android:id="@+id/imageButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pic_default" />
+            android:src="@drawable/pic_default"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pic_default" />
+            android:src="@drawable/pic_default"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/imageButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pic_default" />
+            android:src="@drawable/pic_default"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/imageButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pic_default" />
+            android:src="@drawable/pic_default"
+            tools:ignore="ContentDescription" />
 
         <Button
             android:id="@+id/btnCheck"
