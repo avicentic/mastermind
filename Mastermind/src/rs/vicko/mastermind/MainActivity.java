@@ -2,6 +2,7 @@ package rs.vicko.mastermind;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -142,6 +143,15 @@ public class MainActivity extends Activity
 				}
 
 				//text.setText(String.format("%s-%s", hitPosition, hitColor));
+
+				if (hitPosition == 4)
+				{
+					AlertDialog alertDialog;
+					alertDialog = new AlertDialog.Builder(activity).create();
+					alertDialog.setTitle("Bravo");
+					alertDialog.setMessage("You finished game!!!");
+					alertDialog.show();
+				}
 
 				//clear attempt
 				attempt = new Attempt(4);
