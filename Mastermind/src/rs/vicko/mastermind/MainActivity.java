@@ -246,12 +246,14 @@ public class MainActivity extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		Log.d("onOptionsItemSelected", (String) item.getTitle());
-		//		switch (item.getItemId())
-		//		{
-		//		default:
-		startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-		return true;
-		//		}
+		switch (item.getItemId())
+		{
+		case R.id.action_settings:
+			startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+			return true;
+		default:
+			return true;
+		}
 
 	}
 
