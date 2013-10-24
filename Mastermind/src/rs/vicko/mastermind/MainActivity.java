@@ -3,10 +3,11 @@ package rs.vicko.mastermind;
 import rs.vicko.commons.MessageBox;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -239,6 +240,19 @@ public class MainActivity extends Activity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		Log.d("onOptionsItemSelected", (String) item.getTitle());
+		//		switch (item.getItemId())
+		//		{
+		//		default:
+		startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+		return true;
+		//		}
+
 	}
 
 	public Attempt getAttempt()
