@@ -1,5 +1,6 @@
 package rs.vicko.mastermind;
 
+import rs.vicko.commons.MessageBox;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -146,11 +147,12 @@ public class MainActivity extends Activity
 
 				if (hitPosition == 4)
 				{
-					AlertDialog alertDialog;
-					alertDialog = new AlertDialog.Builder(activity).create();
-					alertDialog.setTitle("Bravo");
-					alertDialog.setMessage("You finished game!!!");
-					alertDialog.show();
+					//					AlertDialog alertDialog;
+					//					alertDialog = new AlertDialog.Builder(activity).create();
+					//					alertDialog.setTitle("Bravo");
+					//					alertDialog.setMessage("You finished game!!!");
+					//					alertDialog.show();
+					MessageBox.showMessage(activity, "Bravo", "You finished game!!!");
 				}
 
 				//clear attempt
