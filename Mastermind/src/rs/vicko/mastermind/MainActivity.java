@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 
 public class MainActivity extends Activity
@@ -70,10 +69,14 @@ public class MainActivity extends Activity
 			{
 				attemptNo++;
 
-				int tableRowId = getResources().getIdentifier("tableRowAtempt" + attemptNo, "id",
-						activity.getPackageName());
+				TableLayout tableLayout = (TableLayout) findViewById(R.id.tablelayout);
+				//TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
 
-				TableRow tableRow = (TableRow) findViewById(tableRowId);
+				TableRow tableRow = new TableRow(activity);
+				tableRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+						TableRow.LayoutParams.WRAP_CONTENT));
+				//tableRow.setLayoutParams(new TableRow.LayoutParams(50, 50));
+				//TableRow tableRow = (TableRow) findViewById(tableRowId);
 
 				for (int i = 1; i <= 4; i++)
 				{
@@ -84,6 +87,7 @@ public class MainActivity extends Activity
 					image.setImageResource(imageId);
 					tableRow.addView(image);
 				}
+
 				//TextView text = new TextView(getApplicationContext());
 				//tableRow.addView(text);
 
@@ -118,9 +122,9 @@ public class MainActivity extends Activity
 					}
 				}
 
-				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-						LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-				params.gravity = Gravity.CENTER_VERTICAL;
+				//				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				//						LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				//				params.gravity = Gravity.CENTER_VERTICAL;
 
 				for (int i = 1; i <= hitPosition; i++)
 				{
@@ -143,7 +147,8 @@ public class MainActivity extends Activity
 					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
-
+				tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+						TableLayout.LayoutParams.WRAP_CONTENT));
 				//text.setText(String.format("%s-%s", hitPosition, hitColor));
 
 				if (hitPosition == 4)
