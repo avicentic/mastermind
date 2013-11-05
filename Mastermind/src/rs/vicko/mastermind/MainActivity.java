@@ -149,15 +149,9 @@ public class MainActivity extends Activity
 				}
 				tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
 						TableLayout.LayoutParams.WRAP_CONTENT));
-				//text.setText(String.format("%s-%s", hitPosition, hitColor));
 
 				if (hitPosition == 4)
 				{
-					//					AlertDialog alertDialog;
-					//					alertDialog = new AlertDialog.Builder(activity).create();
-					//					alertDialog.setTitle("Bravo");
-					//					alertDialog.setMessage("You finished game!!!");
-					//					alertDialog.show();
 					MessageBox.showMessage(activity, "Bravo", "You finished game!!!");
 				}
 
