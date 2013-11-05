@@ -94,53 +94,27 @@ public class MainActivity extends Activity
 				Log.d("OnCheck", "attempt: " + attempt.toString());
 				Log.d("OnCheck", "target: " + target.toString());
 
-				Attempt a = attempt.clone();
-				Attempt t = target.clone();
-
-				int hitColor = 0;
-				int hitPosition = 0;
-				for (int i = 1; i <= 4; i++)
-				{
-					if (a.getToken(i).getId() == t.getToken(i).getId())
-					{
-						a.setToken(Token.DEFAULT, i);
-						t.setToken(Token.DEFAULT, i);
-						hitPosition++;
-					}
-				}
-				for (int i = 1; i <= 4; i++)
-				{
-					for (int j = 1; j <= 4; j++)
-					{
-						if (a.getToken(i) != Token.DEFAULT && t.getToken(j) != Token.DEFAULT
-								&& a.getToken(i).getId() == t.getToken(j).getId())
-						{
-							a.setToken(Token.DEFAULT, i);
-							t.setToken(Token.DEFAULT, j);
-							hitColor++;
-						}
-					}
-				}
+				Hit hit = checkAttempt();
 
 				//				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				//						LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 				//				params.gravity = Gravity.CENTER_VERTICAL;
 
-				for (int i = 1; i <= hitPosition; i++)
+				for (int i = 1; i <= hit.getHitPosition(); i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_position_ok);
 					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
-				for (int i = 1; i <= hitColor; i++)
+				for (int i = 1; i <= hit.getHitColor(); i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_color_ok);
 					//image.setLayoutParams(params);
 					tableRow.addView(image);
 				}
-				for (int i = 1; i <= 4 - hitPosition - hitColor; i++)
+				for (int i = 1; i <= 4 - hit.getHitPosition() - hit.getHitColor(); i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
 					image.setImageResource(R.drawable.pic_missed);
@@ -150,9 +124,13 @@ public class MainActivity extends Activity
 				tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
 						TableLayout.LayoutParams.WRAP_CONTENT));
 
-				if (hitPosition == 4)
+				if (hit.getHitPosition() == 4)
 				{
 					MessageBox.showMessage(activity, "Bravo", "You finished game!!!");
+				}
+				else if (attemptNo == 8)
+				{
+					MessageBox.showMessage(activity, ":-(", "You are looser, game is over");
 				}
 
 				//clear attempt
@@ -264,6 +242,40 @@ public class MainActivity extends Activity
 	public void setAttempt(Attempt attempt)
 	{
 		this.attempt = attempt;
+	}
+
+	private Hit checkAttempt()
+	{
+		int hitColor = 0;
+		int hitPosition = 0;
+
+		Attempt a = attempt.clone();
+		Attempt t = target.clone();
+		for (int i = 1; i <= 4; i++)
+		{
+			if (a.getToken(i).getId() == t.getToken(i).getId())
+			{
+				a.setToken(Token.DEFAULT, i);
+				t.setToken(Token.DEFAULT, i);
+				hitPosition++;
+			}
+		}
+		for (int i = 1; i <= 4; i++)
+		{
+			for (int j = 1; j <= 4; j++)
+			{
+				if (a.getToken(i) != Token.DEFAULT && t.getToken(j) != Token.DEFAULT
+						&& a.getToken(i).getId() == t.getToken(j).getId())
+				{
+					a.setToken(Token.DEFAULT, i);
+					t.setToken(Token.DEFAULT, j);
+					hitColor++;
+				}
+			}
+		}
+
+		return new Hit(hitPosition, hitColor);
+
 	}
 
 }
