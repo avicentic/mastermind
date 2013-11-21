@@ -24,7 +24,7 @@ public class MastermindImpl implements Mastermind
 
 		tokenId = tokenId + 1 > Token.getMaxId() ? 1 : tokenId + 1;
 
-		int drawableId = activity.getResources().getIdentifier("pic0" + tokenId, "drawable", activity.getPackageName());
+		int drawableId = activity.getResources().getIdentifier("pic0" + tokenId + "_48", "drawable", activity.getPackageName());
 
 		Log.d("setNextToken", String.format("On position %s set token %s", tokenPos, Token.byId(tokenId)));
 

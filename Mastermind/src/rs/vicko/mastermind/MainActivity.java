@@ -4,14 +4,19 @@ import rs.vicko.commons.MessageBox;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -81,8 +86,8 @@ public class MainActivity extends Activity
 				for (int i = 1; i <= 4; i++)
 				{
 					ImageView image = new ImageView(getApplicationContext());
-					int imageId = getResources().getIdentifier("pic0" + attempt.getToken(i).getId(), "drawable",
-							activity.getPackageName());
+					int imageId = getResources().getIdentifier("pic0" + attempt.getToken(i).getId() + "_48",
+							"drawable", activity.getPackageName());
 					Log.d("OnCheck", String.format("Found image id = %s", imageId));
 					image.setImageResource(imageId);
 					tableRow.addView(image);
@@ -96,31 +101,8 @@ public class MainActivity extends Activity
 
 				Hit hit = checkAttempt();
 
-				//				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				//						LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-				//				params.gravity = Gravity.CENTER_VERTICAL;
+				drawHit(tableRow, hit);
 
-				for (int i = 1; i <= hit.getHitPosition(); i++)
-				{
-					ImageView image = new ImageView(getApplicationContext());
-					image.setImageResource(R.drawable.pic_position_ok);
-					//image.setLayoutParams(params);
-					tableRow.addView(image);
-				}
-				for (int i = 1; i <= hit.getHitColor(); i++)
-				{
-					ImageView image = new ImageView(getApplicationContext());
-					image.setImageResource(R.drawable.pic_color_ok);
-					//image.setLayoutParams(params);
-					tableRow.addView(image);
-				}
-				for (int i = 1; i <= 4 - hit.getHitPosition() - hit.getHitColor(); i++)
-				{
-					ImageView image = new ImageView(getApplicationContext());
-					image.setImageResource(R.drawable.pic_missed);
-					//image.setLayoutParams(params);
-					tableRow.addView(image);
-				}
 				tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
 						TableLayout.LayoutParams.WRAP_CONTENT));
 
@@ -139,7 +121,7 @@ public class MainActivity extends Activity
 				{
 					int resourceId = getResources().getIdentifier("imageButton" + i, "id", activity.getPackageName());
 					ImageButton imageButton = (ImageButton) findViewById(resourceId);
-					imageButton.setImageResource(R.drawable.pic_default);
+					imageButton.setImageResource(R.drawable.pic_default_48);
 				}
 				button.setClickable(false);
 			}
@@ -278,4 +260,33 @@ public class MainActivity extends Activity
 
 	}
 
+	private void drawHit(TableRow tableRow, Hit hit)
+	{
+
+		//		for (int i = 1; i <= hit.getHitPosition(); i++)
+		//		{
+		//			ImageView image = new ImageView(getApplicationContext());
+		//			image.setImageResource(R.drawable.pic_position_ok);
+		//			tableRow.addView(image);
+		//		}
+		//		for (int i = 1; i <= hit.getHitColor(); i++)
+		//		{
+		//			ImageView image = new ImageView(getApplicationContext());
+		//			image.setImageResource(R.drawable.pic_color_ok);
+		//			tableRow.addView(image);
+		//		}
+		//		for (int i = 1; i <= 4 - hit.getHitPosition() - hit.getHitColor(); i++)
+		//		{
+		//			ImageView image = new ImageView(getApplicationContext());
+		//			image.setImageResource(R.drawable.pic_missed);
+		//			tableRow.addView(image);
+		//		}
+
+		int drawableId = activity.getResources().getIdentifier(
+				String.format("pic_hit_%s_%s_%s", hit.getHitPosition(), hit.getHitColor(), 4 - hit.getHitPosition()
+						- hit.getHitColor()), "drawable", activity.getPackageName());
+		ImageView image = new ImageView(getApplicationContext());
+		image.setImageResource(drawableId);
+		tableRow.addView(image);
+	}
 }

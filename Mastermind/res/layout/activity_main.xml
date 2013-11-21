@@ -19,28 +19,28 @@
                 android:id="@+id/imageButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pic_default"
+                android:src="@drawable/pic_default_48"
                 tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pic_default"
+                android:src="@drawable/pic_default_48"
                 tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pic_default"
+                android:src="@drawable/pic_default_48"
                 tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pic_default"
+                android:src="@drawable/pic_default_48"
                 tools:ignore="ContentDescription" />
 
             <Button
@@ -48,7 +48,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/check" />
+
         </TableRow>
+
+
     </TableLayout>
 
 </LinearLayout>
