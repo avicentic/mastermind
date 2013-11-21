@@ -103,8 +103,8 @@ public class MainActivity extends Activity
 
 				drawHit(tableRow, hit);
 
-				tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
-						TableLayout.LayoutParams.WRAP_CONTENT));
+				tableLayout.addView(tableRow, tableLayout.getChildCount() - 1, new TableLayout.LayoutParams(
+						TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
 				if (hit.getHitPosition() == 4)
 				{
