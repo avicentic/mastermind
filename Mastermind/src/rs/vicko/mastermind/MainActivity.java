@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
@@ -108,11 +109,16 @@ public class MainActivity extends Activity
 
 				if (hit.getHitPosition() == 4)
 				{
-					MessageBox.showMessage(activity, "Bravo", "You finished game!!!");
+					//MessageBox.showMessage(activity, "Bravo", "You finished game!!!");
+					Toast.makeText(getApplicationContext(), "You finished game!!!", Toast.LENGTH_LONG).show();
+					hideHitTableRow();
 				}
 				else if (attemptNo == 8)
 				{
-					MessageBox.showMessage(activity, ":-(", "You are looser, game is over");
+					//MessageBox.showMessage(activity, ":-(", "You are looser, game is over");
+					Toast.makeText(getApplicationContext(), ":-(, You are looser, game is over", Toast.LENGTH_LONG)
+							.show();
+					hideHitTableRow();
 				}
 
 				//clear attempt
@@ -124,6 +130,13 @@ public class MainActivity extends Activity
 					imageButton.setImageResource(R.drawable.pic_default_48);
 				}
 				button.setClickable(false);
+			}
+
+			private void hideHitTableRow()
+			{
+				TableLayout tableLayout = (TableLayout) findViewById(R.id.tablelayout);
+				tableLayout.getChildAt(tableLayout.getChildCount() - 1).setVisibility(View.INVISIBLE);
+
 			}
 		});
 
