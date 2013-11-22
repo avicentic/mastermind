@@ -1,5 +1,6 @@
 package rs.vicko.mastermind;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -16,7 +17,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-
 import java.util.List;
 
 /**
@@ -53,6 +53,7 @@ public class SettingsActivity extends PreferenceActivity
 	 * device configuration dictates that a simplified, single-pane UI should be
 	 * shown.
 	 */
+	@SuppressWarnings("deprecation")
 	private void setupSimplePreferencesScreen()
 	{
 		if (!isSimplePreferences(this))
@@ -98,6 +99,7 @@ public class SettingsActivity extends PreferenceActivity
 	 * Helper method to determine if the device has an extra-large screen. For
 	 * example, 10" tablets are extra-large.
 	 */
+	@SuppressLint("InlinedApi")
 	private static boolean isXLargeTablet(Context context)
 	{
 		return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;

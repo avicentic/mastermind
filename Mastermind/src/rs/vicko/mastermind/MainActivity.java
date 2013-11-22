@@ -1,22 +1,17 @@
 package rs.vicko.mastermind;
 
-import rs.vicko.commons.MessageBox;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -149,7 +144,6 @@ public class MainActivity extends Activity
 
 	private void addListenerOnNewGame()
 	{
-		final MainActivity activity = this;
 		Button button;
 		button = (Button) findViewById(R.id.btnNew);
 
