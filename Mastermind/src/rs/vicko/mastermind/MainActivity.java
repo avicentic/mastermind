@@ -26,7 +26,7 @@ public class MainActivity extends Activity
 
 	private Attempt target;
 	private Attempt attempt = new Attempt(4);
-	private int attemptNo = 0;
+	private int attemptNo;
 
 	private Mastermind mm = new MastermindImpl();
 	private Activity activity = this;
@@ -38,6 +38,8 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		addListenerOnNewGame();
+
 		addListenerOnButton1();
 		addListenerOnButton2();
 		addListenerOnButton3();
@@ -45,7 +47,7 @@ public class MainActivity extends Activity
 
 		addListenerOnCheckButton();
 
-		setTarget();
+		//setTarget();
 
 	}
 
@@ -61,7 +63,7 @@ public class MainActivity extends Activity
 			target.setToken(token, i);
 		}
 		Log.d("setTarget", target.toString());
-
+		attemptNo = 0;
 	}
 
 	private void addListenerOnCheckButton()
@@ -137,9 +139,45 @@ public class MainActivity extends Activity
 				TableLayout tableLayout = (TableLayout) findViewById(R.id.tablelayout);
 				tableLayout.getChildAt(tableLayout.getChildCount() - 1).setVisibility(View.INVISIBLE);
 
+				LinearLayout toolbar = (LinearLayout) findViewById(R.id.toolbarlayout);
+				toolbar.setVisibility(View.VISIBLE);
+
 			}
 		});
 
+	}
+
+	private void addListenerOnNewGame()
+	{
+		final MainActivity activity = this;
+		Button button;
+		button = (Button) findViewById(R.id.btnNew);
+
+		button.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				//mm.setNextToken(activity, 1);
+				prepareViewForNewGame();
+				setTarget();
+			}
+
+			private void prepareViewForNewGame()
+			{
+				TableLayout tableLayout = (TableLayout) findViewById(R.id.tablelayout);
+				while (tableLayout.getChildCount() > 1)
+				{
+					TableRow row = (TableRow) tableLayout.getChildAt(0);
+					tableLayout.removeView(row);
+				}
+				tableLayout.getChildAt(0).setVisibility(View.VISIBLE);
+
+				LinearLayout toolbar = (LinearLayout) findViewById(R.id.toolbarlayout);
+				toolbar.setVisibility(View.INVISIBLE);
+				tableLayout.setVisibility(View.VISIBLE);
+			}
+		});
 	}
 
 	private void addListenerOnButton1()
