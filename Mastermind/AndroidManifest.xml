@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="rs.vicko.mastermind.SettingsActivity"
+            android:name="rs.vicko.mastermind.UserSettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
     </application>

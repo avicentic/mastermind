@@ -253,7 +253,7 @@ public class MainActivity extends Activity
 		switch (item.getItemId())
 		{
 		case R.id.action_settings:
-			startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+			startActivity(new Intent(MainActivity.this, UserSettingsActivity.class));
 			return true;
 		default:
 			return true;
